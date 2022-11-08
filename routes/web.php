@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/JKQSAOBOUbUGhDWnHCTIziafAucTqxQcPDsubSxJqG/webhook', function () {
+Route::post('/' . env('TELEGRAM_TOKEN') . '/webhook', function () {
     return Telegram::commandsHandler(true);
 });
