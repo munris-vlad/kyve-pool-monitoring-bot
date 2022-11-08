@@ -18,7 +18,8 @@ class TelegramMessageHandleService
         $telegram = new Telegram;
         $chatId = $updates['message']['chat']['id'];
         $text = $updates['message']['text'];
-        $telegram->sendMessage([
+        $telegram->sendChatAction([
+            'action' => Actions::TYPING,
             'chat_id' => $chatId,
             'text' => 'Your valoper: '.$text
         ]);
