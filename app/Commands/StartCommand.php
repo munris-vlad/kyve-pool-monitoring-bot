@@ -22,13 +22,7 @@ class StartCommand extends Command
      */
     public function handle(): void
     {
-        $commands = $this->telegram->getCommands();
-
-        $text = '';
-        foreach ($commands as $name => $handler) {
-            /* @var Command $handler */
-            $text .= sprintf('/%s - %s'.PHP_EOL, $name, $handler->getDescription());
-        }
+        $text = 'Welcome to Kyve pool monitoring bot! Enter your valoper address for monitoring:';
 
         $this->replyWithMessage(compact('text'));
     }
