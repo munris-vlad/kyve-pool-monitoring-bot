@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Telegram\Bot\Exceptions\TelegramSDKException;
+use Telegram\Bot\Laravel\Facades\Telegram;
 use Telegram\Bot\Methods\Message;
 
 class TelegramMessageHandleService
@@ -16,7 +17,8 @@ class TelegramMessageHandleService
     {
         $chatId = $updates['message']['chat']['id'];
         $text = $updates['message']['text'];
-        $this->sendMessage([
+        $telegram = new Telegram;
+        $telegram->sendMessage([
             'chat_id' => $chatId,
             'text' => 'Your valoper: '.$text
         ]);
