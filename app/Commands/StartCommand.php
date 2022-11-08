@@ -22,7 +22,7 @@ class StartCommand extends Command
      */
     public function handle(): void
     {
-        $text = 'Welcome to Kyve pool monitoring bot! Enter your valoper address for monitoring:';
+        $text = 'Welcome to Kyve pool monitoring bot! Enter your address for monitoring:';
 
         $this->replyWithMessage(compact('text'));
     }

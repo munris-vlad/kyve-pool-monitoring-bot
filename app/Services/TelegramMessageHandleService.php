@@ -21,10 +21,14 @@ class TelegramMessageHandleService
         $chatId = $updates['message']['chat']['id'];
         $text = $updates['message']['text'];
 
-        if (!str_contains($text, 'valoper') || strlen($text) !== 43) {
+        if (str_contains($text, 'start')) {
+            return true;
+        }
+
+        if (!str_contains($text, 'kyve') || strlen($text) !== 43) {
             $telegram->sendMessage([
                 'chat_id' => $chatId,
-                'text' => 'Please send a valid validator address.'
+                'text' => 'Please send a valid address.'
             ]);
 
             return true;
@@ -33,7 +37,7 @@ class TelegramMessageHandleService
         if (UserValoper::where('chatId', $chatId)->where('valoper', $text)->count()) {
             $telegram->sendMessage([
                 'chat_id' => $chatId,
-                'text' => 'You have already subscribed to this validator.'
+                'text' => 'You have already subscribed to this address.'
             ]);
 
             return true;
@@ -46,7 +50,7 @@ class TelegramMessageHandleService
 
         $telegram->sendMessage([
             'chat_id' => $chatId,
-            'text' => 'Your valoper: '.$text.' successfully added to monitoring list',
+            'text' => 'Your address: '.$text.' successfully added to monitoring list',
         ]);
 
         return true;
