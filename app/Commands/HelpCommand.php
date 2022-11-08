@@ -16,11 +16,6 @@ class HelpCommand extends Command
     protected $name = 'help';
 
     /**
-     * @var array Command Aliases
-     */
-    protected $aliases = ['listcommands'];
-
-    /**
      * @var string Command Description
      */
     protected $description = 'Help command, Get a list of all commands';
