@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Illuminate\Support\Facades\Log;
+use App\Services\TelegramMessageHandleService;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::get('/', function () {
 
 Route::post('/' . env('TELEGRAM_TOKEN') . '/webhook', function () {
     $updates = Telegram::commandsHandler(true);
+    $tgMessageService = new TelegramMessageHandleService();
+    $tgMessageService->handle($updates);
     Log::info(json_encode($updates));
     return $updates;
 });
