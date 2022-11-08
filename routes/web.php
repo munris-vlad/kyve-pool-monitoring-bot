@@ -17,7 +17,3 @@ use Telegram\Bot\Laravel\Facades\Telegram;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::post('/' . env('TELEGRAM_BOT_TOKEN') . '/webhook', function () {
-    return Telegram::commandsHandler(true);
-});
