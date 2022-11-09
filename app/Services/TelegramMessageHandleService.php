@@ -44,7 +44,7 @@ class TelegramMessageHandleService
         }
 
         UserValoper::create([
-            'chat_id' => $chatId,
+            'telegram_id' => $chatId,
             'valoper' => $text
         ]);
 
