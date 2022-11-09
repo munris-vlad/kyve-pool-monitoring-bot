@@ -27,7 +27,7 @@ class MonitoringCommand extends Command
 
     protected string $apiUrl = 'https://api.beta.kyve.network/kyve/query/v1beta1/staker/';
     protected int $decimals = 1000000000;
-    protected int $fundsAlertAmount = 1000;
+    protected int $fundsAlertAmount = 100;
 
     /**
      * Execute the console command.
