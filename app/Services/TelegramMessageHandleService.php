@@ -34,7 +34,7 @@ class TelegramMessageHandleService
             return true;
         }
 
-        if (UserValoper::where('chatId', $chatId)->where('valoper', $text)->count()) {
+        if (UserValoper::where('telegram_id', $chatId)->where('valoper', $text)->count()) {
             $telegram->sendMessage([
                 'chat_id' => $chatId,
                 'text' => 'You have already subscribed to this address.'
