@@ -42,8 +42,12 @@ class MonitoringCommand extends Command
         $client = new Client();
 
         foreach ($addresses as $address) {
-            $info = $client->request('GET', $this->apiUrl . $address->valoper)->getBody()->getContents();
-            $info = json_decode($info, true, 512, JSON_THROW_ON_ERROR);
+            try {
+                $info = $client->request('GET', $this->apiUrl . $address->valoper)->getBody()->getContents();
+                $info = json_decode($info, true, 512, JSON_THROW_ON_ERROR);
+            } catch (\GuzzleHttp\Exception\ServerException) {
+                continue;
+            }
 
             $moniker = $info['staker']['metadata']['moniker'];
             $pools = $info['staker']['pools'];
