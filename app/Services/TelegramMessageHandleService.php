@@ -22,7 +22,10 @@ class TelegramMessageHandleService
         $text = $updates['message']['text'];
 
         if (str_contains($text, 'start')) {
-            return '';
+            $telegram->sendMessage([
+                'chat_id' => $chatId,
+                'text' => 'Hello, I am Kyve pool monitoring bot. Send me your validator address and I will notify you when something will happen to your pool.'
+            ]);
         }
 
         if (!str_contains($text, 'kyve') || strlen($text) !== 43) {
