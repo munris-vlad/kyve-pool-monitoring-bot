@@ -32,17 +32,16 @@ class MonitoringCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return bool
      * @throws \JsonException
-     * @throws GuzzleException
+     * @throws GuzzleException|TelegramSDKException
      */
-    public function handle()
+    public function handle(): bool
     {
         $addresses = UserValoper::all();
         $client = new Client();
 
         foreach ($addresses as $address) {
-            $this->info($this->apiUrl . $address->valoper);
             $info = $client->request('GET', $this->apiUrl . $address->valoper)->getBody()->getContents();
             $info = json_decode($info, true, 512, JSON_THROW_ON_ERROR);
 
