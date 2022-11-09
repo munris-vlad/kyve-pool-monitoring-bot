@@ -10,7 +10,7 @@ class UserValoper extends Model
     use HasFactory;
 
     protected $fillable = [
-        'chatId',
+        'telegram_id',
         'valoper'
     ];
 }
