@@ -26,6 +26,8 @@ class TelegramMessageHandleService
                 'chat_id' => $chatId,
                 'text' => 'Hello, I am Kyve pool monitoring bot. Send me your validator address and I will notify you when something will happen to your pool.'
             ]);
+
+            return true;
         }
 
         if (!str_contains($text, 'kyve') || strlen($text) !== 43) {
