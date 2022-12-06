@@ -25,7 +25,7 @@ class MonitoringCommand extends Command
      */
     protected $description = 'Kyve pool monitoring by users addresses';
 
-    protected string $apiUrl = 'https://api.beta.kyve.network/kyve/query/v1beta1/staker/';
+    protected string $apiUrl = 'https://api.explorer.kyve.network/kyve/query/v1beta1/staker/';
     protected int $decimals = 1000000000;
     protected int $fundsAlertAmount = 100;
 
